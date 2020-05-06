@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sesoc.project.dao.MemberMapper">
+	
+	<select id="checkid" parameterType="string" resultType = "int">
+	select 
+		count(*)
+	from
+		MEMBER1
+	where
+		userid = #{userid} 
+	</select>
+	
+	<insert id="signup" parameterType="memberVO">
+	insert into
+			MEMBER1
+		values(
+			member_seq.nextval,
+			#{userid},
+			#{userpwd},
+			#{username},
+			#{phone},
+			sysdate,
+			default
+		)
+	</insert>
+	
+	<select id="login" parameterType="memberVO" resultType = "int">
+	select 
+		count(*)
+	from
+		MEMBER1
+	where
+		userid = #{userid} 
+		and userpwd = #{userpwd}
+	
+	</select>
+	
+	<select id="hoList" parameterType= "hospitalVO" resultType = "hospitalVO">
+	select 
+		id
+		,phone
+		,location
+		,xValue
+		,yValue
+		
+	from 
+		hospital 
+	order by  
+		 calc_distance(XValue, YValue, #{xValue},#{yValue})
+	</select>
+	
+	<select resultType="memberVO" parameterType="string" id="getMember"> 
+	SELECT 
+		* 
+	FROM 
+		member1 
+	WHERE 
+		userid = #{userid} 
+	</select>
+
+	<update parameterType="string" id="smsOk"> 
+	UPDATE 
+		member1 
+	SET 
+		sms_agr = 'y' 
+	WHERE 
+		userid = #{userid} 
+	</update>
+	
+	<update parameterType="string" id="smsNo"> 
+	UPDATE 
+		member1 
+	SET 
+		sms_agr = 'n' 
+	WHERE 
+		userid = #{userid} 
+	</update>
+
+	<select resultType="string" id="smsOkList"> 
+	select 
+		userid
+	from 
+		member1 
+	where 
+		sms_agr = 'y' 
+	</select>
+	
+	<select id="getPhone" resultType="string" parameterType="string">
+		SELECT
+			phone
+		FROM
+			member1
+		WHERE
+			userid = #{userid}
+	</select>
+	
+	
+</mapper>

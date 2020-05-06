@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sesoc.project.dao.CatMapper">
+	<select id="getList" parameterType = "string" resultType="catVO">
+		SELECT
+			*
+		FROM
+			cat
+		WHERE
+			userid = #{userid}
+		order by
+			cat_no
+	</select>
+	
+	<insert id="insertCat" parameterType="catVO">
+	insert into
+		cat
+	values
+	(
+			cat_seq.nextval
+			, #{userid}
+			, #{catname}
+			, #{cat_birth}
+	)
+	
+	</insert>
+	
+	<select id="read" parameterType="catVO" resultType="catVO">
+	select 
+		*
+	from
+		cat
+	where
+		cat_no = #{cat_no}
+	
+	</select>
+	
+	<delete id="delete" parameterType="catVO">
+	delete 
+		cat
+	where
+		cat_no = #{cat_no}
+		and userid = #{userid}
+	
+	</delete>
+
+	<update id="updateCat" parameterType="catVO">
+		update
+			cat
+		set
+			catname = #{catname}
+			,cat_birth = #{cat_birth}
+			
+		where
+			cat_no = #{cat_no}
+			and userid = #{userid}
+	</update>
+</mapper>

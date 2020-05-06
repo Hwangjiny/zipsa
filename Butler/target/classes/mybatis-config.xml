@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+	
+	<typeAliases>
+ 		<typeAlias alias="hospitalVO" type="com.sesoc.project.vo.HospitalVO"/>
+		<typeAlias alias="replyVO" type="com.sesoc.project.vo.ReplyVO"/>
+		<typeAlias alias="qnareplyVO" type="com.sesoc.project.vo.QnaReplyVO"/>
+		<typeAlias alias="boardVO" type="com.sesoc.project.vo.BoardVO"/>
+		<typeAlias alias="memberVO" type="com.sesoc.project.vo.MemberVO"/>
+		<typeAlias alias="qnaboardVO" type="com.sesoc.project.vo.QnaBoardVO"/>
+		<typeAlias alias="catVO" type="com.sesoc.project.vo.CatVO"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="mapper/hospitalMapper.xml"/>
+		<mapper resource="mapper/boardMapper.xml"/>
+		<mapper resource="mapper/replyMapper.xml"/>
+		<mapper resource="mapper/qnareplyMapper.xml"/>
+		<mapper resource="mapper/memberMapper.xml"/>
+		<mapper resource="mapper/qnaboardMapper.xml"/>
+		<mapper resource="mapper/catMapper.xml"/>
+	</mappers>
+
+</configuration>
