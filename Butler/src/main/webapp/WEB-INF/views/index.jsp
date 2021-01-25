@@ -46,7 +46,7 @@ body div.mainButton {
         <div class="intro-text left-0 text-center bg-faded p-5 rounded" style="margin-top: 0px; height: 433px;">
           <h2 class="section-heading mb-4">
             <span class="section-heading-upper">正しいペット文化</span>
-            <span class="section-heading-lower">執事の条件</span>
+            <span class="section-heading-lower">執事の条件 -commit test version-</span>
           </h2>
            <pre class="mb-3">
 「執事の条件」は
